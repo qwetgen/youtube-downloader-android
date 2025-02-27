@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 class MainActivity : ComponentActivity() {
@@ -24,29 +25,36 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun VideoDownloaderUI() {
-    var url remember { mutableStateOf("") }
-    var status remember { mutableStateOf("Enter YouTube URL") }
+    var url by remember { mutableStateOf("") }
+    var status by remember { mutableStateOf("Enter YouTube URL") }
 
     Column(modifier = Modifier.padding(16.dp)) {
         Text(text = "YouTube Video Downloader", style = MaterialTheme.typography.h5)
         Spacer(modifier = Modifier.height(8.dp))
+        
         OutlinedTextField(
             value = url,
             onValueChange = { url = it },
             label = { Text("Enter Video URL") },
             modifier = Modifier.fillMaxWidth()
         )
+        
         Spacer(modifier = Modifier.height(8.dp))
+        
         Button(onClick = {
             status = "Downloading..."
             CoroutineScope(Dispatchers.IO).launch {
                 val success = downloadVideo(url)
-                status = if (success) "Download Complete" else "Download Failed"
+                withContext(Dispatchers.Main) {
+                    status = if (success) "Download Complete" else "Download Failed"
+                }
             }
         }, modifier = Modifier.fillMaxWidth()) {
             Text("Download Video")
         }
+        
         Spacer(modifier = Modifier.height(8.dp))
+        
         Text(text = status)
     }
 }
