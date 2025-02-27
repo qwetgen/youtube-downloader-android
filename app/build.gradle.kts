@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.youtubedownloader"
+    namespace = "com.example.youtubedownloader"  // Это можно оставить
     compileSdk = 33
 
     defaultConfig {
