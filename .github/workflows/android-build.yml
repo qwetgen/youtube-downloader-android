@@ -1,3 +1,4 @@
+---
 name: Android APK Build
 
 on:
@@ -30,4 +31,3 @@ jobs:
         with:
           name: app-release
           path: app/build/outputs/apk/debug/*.apk
-
