@@ -24,8 +24,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun VideoDownloaderUI() {
-    var url by remember { mutableStateOf("") }
-    var status by remember { mutableStateOf("Enter YouTube URL") }
+    var url remember { mutableStateOf("") }
+    var status remember { mutableStateOf("Enter YouTube URL") }
 
     Column(modifier = Modifier.padding(16.dp)) {
         Text(text = "YouTube Video Downloader", style = MaterialTheme.typography.h5)
