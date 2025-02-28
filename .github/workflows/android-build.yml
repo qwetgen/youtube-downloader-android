@@ -26,8 +26,27 @@ jobs:
       - name: Grant execute permission for Gradlew
         run: chmod +x gradlew
 
-      - name: Debug Dependencies
-        run: ./gradlew dependencies --stacktrace
+      - name: Debug System Info
+        run: |
+          echo "### Java Version ###"
+          java -version
+          echo "### Gradle Version ###"
+          ./gradlew --version || echo "Gradle not found"
+          echo "### Kotlin Version ###"
+          ./gradlew -version || echo "Kotlin not found"
+          echo "### List Installed SDKs ###"
+          sdkmanager --list || echo "SDK Manager not found"
+          echo "### Android Build Tools Version ###"
+          ls -lah /usr/local/lib/android/sdk/build-tools/ || echo "No Build Tools found"
+
+      - name: Debug Gradle Dependencies
+        run: ./gradlew dependencies --stacktrace || echo "Gradle dependencies failed"
+
+      - name: Debug Gradle Properties
+        run: cat gradle.properties || echo "gradle.properties not found"
+
+      - name: Debug Build File
+        run: cat app/build.gradle.kts || echo "No app/build.gradle.kts found"
 
       - name: Build APK
         run: ./gradlew assembleDebug
