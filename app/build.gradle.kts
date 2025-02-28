@@ -32,7 +32,7 @@ android {
     }
 
     composeOptions {  // ✅ Перенесено внутрь `android {}`
-        kotlinCompilerExtensionVersion = "1.5.4"
+        kotlinCompilerExtensionVersion = "1.6.0"
     }
 }
 
