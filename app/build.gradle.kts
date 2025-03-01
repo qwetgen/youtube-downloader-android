@@ -43,4 +43,5 @@ dependencies {
     implementation("androidx.compose.material:material:1.6.0")
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.compose.runtime:runtime:1.6.0-beta01")
 }
