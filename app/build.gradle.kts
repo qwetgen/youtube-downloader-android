@@ -32,7 +32,7 @@ android {
     }
 
     composeOptions {  // ✅ Перенесено внутрь `android {}`
-        kotlinCompilerExtensionVersion = "1.6.1"
+        kotlinCompilerExtensionVersion = "1.6.2"
     }
 }
 
@@ -41,11 +41,11 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
 
     // Используем одинаковую версию для всех компонентов Compose
-    val composeVersion = "1.6.1" // Или последняя стабильная
+    val composeVersion = "1.6.2" // Или последняя стабильная
 
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.activity:activity-compose:1.9.0")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.compose.runtime:runtime:$composeVersion")
 }
